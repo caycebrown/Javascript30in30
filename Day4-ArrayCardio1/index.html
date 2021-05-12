@@ -92,15 +92,14 @@
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-    y = {}
-    function count(x) {
-      if (y.x){
-        y.x = y.x++
+    function count(y, z) {
+      if (!y[z]){
+        y[z] = 0
       }
-      else {y.x = 0
-    }
+        y[z]++
+        return y
+    
 
-    return y
   }
 
   </script>
