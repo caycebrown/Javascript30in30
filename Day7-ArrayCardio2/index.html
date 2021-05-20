@@ -33,14 +33,20 @@
 
 
     // Array.prototype.every() // is everyone 19 or older?
+    const year = new Date().getFullYear();
+    const older = people.every(person => person.year -year >= 19);
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const search = comments.find(x => x.id = '823423');
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    function remove(id){
+      comments.splice(comments.findIndex(x => x.id = id), 1);
+    };
 
   </script>
 </body>
