@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+
+    canvas = document.querySelector("#draw");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const ctx = canvas.getContext('2d');
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.lineWidth = 50;
+    let hue = 0;
+    let direction = true;
+
+    
+
+    let isDrawing = false;
+
+    function draw(e) {
+        if (!isDrawing) return;
+        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+        let x = e.offsetX;
+        let y = e.offsetY;
+        ctx.beginPath();
+        ctx.moveTo(x,y);
+        ctx.lineTo(x,y);
+        ctx.stroke();
+
+        hue++;
+        hue >= 360 ? hue = 0 : null;
+        ctx.lineWidth >= 100 ? direction = !direction : null;
+        ctx.lineWidth <= 1 ? direction = !direction : null;
+
+        direction ? ctx.lineWidth++ : ctx.lineWidth--;
+
+    }
+
+    document.addEventListener('mousedown', (x) => isDrawing = true);
+    document.addEventListener('mouseup', (x) => isDrawing = false);
+    document.addEventListener('mouseout', (x) => isDrawing = false);
+    document.addEventListener('mousemove', draw);
+
+</script>
+
+<style>
+
+  html, body {
+    margin: 0;
+  }
+
+</style>
+
+</body>
+</html>
