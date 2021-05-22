@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    var word = 'neat';
+    const p = document.querySelector('p');
+
+    // Regular
+    console.log('this is plain jane');
+
+    // Interpolated
+    console.log('this is some %s stuff', word);
+
+    // Styled
+    console.log('%c this is some styled stuff!', 'font-size: 20px; color: red; background-color: black;');
+
+    // warning!
+    console.warn('you only have 20 seconds!');
+
+    // Error :|
+    console.error('oh boy....');
+
+    // Info
+    console.info('here is some helpful info, fo rizzle dizzle');
+
+    // Testing
+    console.assert( 1 === 2, 'hey thats not right....');
+
+    // clearing
+    console.clear()
+
+    // Viewing DOM Elements
+    console.dir(p);
+
+    // Grouping together
+    
+    dogs.forEach(x => {
+    console.groupCollapsed(x.name);
+    console.log(x.name);
+    console.log(x.age);
+    console.groupEnd(x.name);
+    })
+
+    // counting
+    console.count('hello world');
+    console.count('hello world');
+    console.count('hello world');
+
+    // timing
+    console.time();
+    let x = Math.random();
+    console.log(x * 200);
+    fetch('http://api.github.com/users/caycebrown')
+    .then(data => data.json())
+    .then(data => console.log(data));
+    console.timeEnd();
+
+    console.table(dogs);
+
+  </script>
+</body>
+</html>
+© 2021 GitHub, Inc.
